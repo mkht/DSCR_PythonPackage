@@ -88,7 +88,7 @@ Class pip {
             }
 
             Write-Verbose ('Start package installation : {0}' -f $this.Package)
-            & $pip install --disable-pip-version-check --no-cache-dir --force-reinstall --progress-bar off $query
+            & $pip install --disable-pip-version-check --no-warn-script-location --no-cache-dir --force-reinstall --progress-bar off $query
         }
         elseif ($this.Ensure -eq [Ensure]::Absent) {
             $query = $this.Package
