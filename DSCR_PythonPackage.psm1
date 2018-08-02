@@ -29,7 +29,7 @@ Class pip {
 
 
     [pip] Get() {
-        $pip = $this.TestPipPath($this.PythonPath)
+        $pip = $this.TestPipPath($this.PipPath)
 
         if (-not $pip) {
             throw 'pip.exe is not found!'
@@ -70,7 +70,7 @@ Class pip {
 
 
     [void] Set() {
-        $pip = $this.TestPipPath($this.PythonPath)
+        $pip = $this.TestPipPath($this.PipPath)
 
         if (-not $pip) {
             throw 'pip.exe is not found!'
@@ -112,7 +112,7 @@ Class pip {
             return (Resolve-Path $Path).Path
         }
         else {
-            $Command = Get-Command 'pip' -CommandType Application
+            $Command = Get-Command 'pip' -CommandType Application -ErrorAction SilentlyContinue
             if (-not $Command) {
                 return ''
             }
