@@ -20,7 +20,7 @@
     Copyright            = '(c) 2018 mkht All rights reserved.'
 
     # Description of the functionality provided by this module
-    # Description = ''
+    Description          = 'PowerShell DSC Resource for Python Package management (pip)'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion    = '5.0'
