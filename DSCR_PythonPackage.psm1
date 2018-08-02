@@ -76,17 +76,26 @@ Class pip {
             throw 'pip.exe is not found!'
         }
 
-        # if ($this.PackageFile) {
-        #     $query = $this.PackageFile
-        # }
-        if ($this.Version) {
-            $query = $this.Package + '==' + $this.Version
-        }
-        else {
-            $query = $this.Package
-        }
+        if ($this.Ensure -eq [Ensure]::Present) {
+            # if ($this.PackageFile) {
+            #     $query = $this.PackageFile
+            # }
+            if ($this.Version) {
+                $query = $this.Package + '==' + $this.Version
+            }
+            else {
+                $query = $this.Package
+            }
 
-        & $pip install --disable-pip-version-check --no-cache-dir --force-reinstall --progress-bar off $query
+            Write-Verbose ('Start package installation : {0}' -f $this.Package)
+            & $pip install --disable-pip-version-check --no-cache-dir --force-reinstall --progress-bar off $query
+        }
+        elseif ($this.Ensure -eq [Ensure]::Absent) {
+            $query = $this.Package
+
+            Write-Verbose ('Start package uninstallation : {0}' -f $this.Package)
+            & $pip uninstall --disable-pip-version-check -y $query
+        }
     }
 
 
