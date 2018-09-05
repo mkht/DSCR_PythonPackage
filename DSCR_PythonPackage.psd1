@@ -5,7 +5,7 @@
     DscResourcesToExport = 'pip'
 
     # Version number of this module.
-    ModuleVersion        = '0.2.0'
+    ModuleVersion        = '0.2.1'
 
     # ID used to uniquely identify this module
     GUID                 = 'cde27ce5-de79-429f-821f-25bb9562bdc7'
